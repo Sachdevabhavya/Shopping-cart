@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+</head>
+<body>
+    <h1>Your Personal Shopping Cart ;)</h1>
+    <br>
+    <div class="content">
+        
+        <section class="interactive">
+            <form action="/" method="post">
+                <input type="text" name="taskName" id="taskName" placeholder="enter desired item." autocomplete="off">
+                <input type="number" name="qty" id="qty" placeholder="enter desired qty" autocomplete="off">
+                <input type="number" name="price" id="price" placeholder="enter the price" autocomplete="off">
+                <button type="submit">+</button>
+            </form>
+        </section>
+        <section class="listholder">
+            <ul class="itemlist">
+            <% items.forEach( function(i) { %>
+                <div class="taskCombo">
+                    <button class="delbtn" data-item-id="<%= i._id %>">X</button>
+                    <li class="taskitem">
+                        <p><%=i.name%></p> <p><%= i.qty %></p> <p><%= i.price %></p>
+                    </li>
+                </div>
+                <% }); %>
+            </ul>
+        </section>
+    </div>
+    <script>
+        const deleteItem = async (e) => {
+            var res = await fetch("/delete", 
+                {method: "POST", 
+                headers: {"Content-Type": "application/json",},
+                body: JSON.stringify({itemId: e.target.getAttribute("data-item-id")})});
+            res = await res.json();
+            if (res.status === "success") {
+                e.target.parentElement.remove();
+            } else {
+                console.error("couldn't delete");
+            }
+        }
+        document.querySelectorAll(".delbtn").forEach(btn => btn.addEventListener("click", deleteItem))
+    </script>
+</body>
+</html>
+
+
