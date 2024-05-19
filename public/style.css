@@ -1,0 +1,60 @@
+.content {
+  margin: 0 auto;
+  font-family: sans-serif;
+  background-color: white;
+  width: 820px;
+  height: 200px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  /* overflow: scroll; */
+  background-image: linear-gradient(#FFCCCB,#FFAE42);
+  
+}
+
+h1{
+  text-align: center;
+  color: #FFED00;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+}
+
+.taskCombo {
+  display: block;
+}
+
+.taskitem p {
+  display: inline-block;
+  margin: 0;
+}
+
+.interactive {
+  margin-bottom: 20px;
+}
+
+body{
+  background-image: linear-gradient(45deg,blue,green);
+  background-size: contain;
+}
+
+button{
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: lightcoral;
+}
+
+input{
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
